@@ -7,5 +7,26 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.45/moment-timezone-with-data-1970-2030.min.js"></script>
         <title>Timezones</title>
     </head>
-    <body></body>
+    <body>
+        <select id="city">
+            <option value="">Select a city</option>
+            <option value="Europe/Paris">Paris 🇫🇷 🗼</option>
+            <option value="Asia/Tokyo">Tokyo 🇯🇵 🏯</option>
+            <option value="Australia/Sydney">Sydney 🇦🇺 ✈️</option>
+        </select>
+        <script>
+            function showDate(event) {
+                if (event.target.value.length > 0) {
+                    let currentTime = moment()
+                        .tz(event.target.value)
+                        .format("dddd Do MMMM YYYY h:mm A");
+
+                    alert(`It is ${currentTime} in ${event.target.value}`);
+                }
+            }
+
+            let selectElement = document.querySelector("#city");
+            selectElement.addEventListener("change", showDate);
+        </script>
+    </body>
 </html>
